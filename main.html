@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 17th Birthday 🎀</title>
+    <style>
+        :root {
+            --pink: #ffd6e8;
+            --pink-deep: #ff9ec4;
+            --pink-line: #ff7fb4;
+            --white: #fffaf9;
+            --gold: #f3d9a4;
+            --lavender: #e3d9f7;
+            --text: #6b4a55;
+            --shadow: 0 10px 30px rgba(255, 158, 196, 0.35);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            font-family: 'Segoe UI', 'Trebuchet MS', sans-serif;
+            background: linear-gradient(160deg, var(--white) 0%, var(--pink) 55%, var(--lavender) 100%);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        .script {
+            font-family: 'Brush Script MT', 'Segoe Script', cursive;
+        }
+
+        /* ---------- Background floating decorations ---------- */
+        .bg-decor {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .floatie {
+            position: absolute;
+            opacity: 0.55;
+            animation: floatUp linear infinite;
+            user-select: none;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(110vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.6;
+            }
+
+            90% {
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translateY(-10vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* ---------- 4 ẢNH BAY XUNG QUANH ---------- */
+        .flying-photo {
+            position: absolute;
+            width: clamp(90px, 15vw, 140px);
+            height: clamp(120px, 20vw, 180px);
+            border: 4px solid var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.5;
+            /* Làm mờ 1 chút để không rối chữ */
+        }
+
+        .flying-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Cài đặt vị trí và quỹ đạo bay cho 4 ảnh */
+        .fp-1 {
+            top: 5%;
+            left: 0%;
+            animation: fly1 24s ease-in-out infinite alternate;
+        }
+
+        .fp-2 {
+            bottom: 5%;
+            right: 0%;
+            animation: fly2 28s ease-in-out infinite alternate;
+        }
+
+        .fp-3 {
+            top: 50%;
+            left: -5%;
+            animation: fly3 22s ease-in-out infinite alternate;
+        }
+
+        .fp-4 {
+            top: 0%;
+            right: 10%;
+            animation: fly4 26s ease-in-out infinite alternate;
+        }
+
+        @keyframes fly1 {
+            0% {
+                transform: translate(0, 0) rotate(-10deg);
+            }
+
+            100% {
+                transform: translate(75vw, 40vh) rotate(25deg);
+            }
+        }
+
+        @keyframes fly2 {
+            0% {
+                transform: translate(0, 0) rotate(15deg);
+            }
+
+            100% {
+                transform: translate(-75vw, -50vh) rotate(-15deg);
+            }
+        }
+
+        @keyframes fly3 {
+            0% {
+                transform: translate(0, 0) rotate(-5deg);
+            }
+
+            100% {
+                transform: translate(70vw, -30vh) rotate(20deg);
+            }
+        }
+
+        @keyframes fly4 {
+            0% {
+                transform: translate(0, 0) rotate(10deg);
+            }
+
+            100% {
+                transform: translate(-60vw, 60vh) rotate(-20deg);
+            }
+        }
+
+        /* ---------- Screens ---------- */
+        .screen {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            z-index: 1;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* ---------- Intro screen ---------- */
+        #intro {
+            text-align: center;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .badge {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--pink-line);
+            font-weight: 600;
+        }
+
+        .intro-title {
+            font-size: clamp(2.4rem, 8vw, 4.5rem);
+            color: var(--pink-line);
+            text-shadow: 2px 2px 0 var(--white), 4px 4px 10px rgba(255, 126, 180, 0.3);
+        }
+
+        .intro-sub {
+            max-width: 480px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--text);
+        }
+
+        .envelope-wrap {
+            perspective: 1000px;
+            margin-top: 10px;
+        }
+
+        .envelope {
+            width: 260px;
+            height: 170px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .envelope:hover {
+            transform: translateY(-6px) scale(1.03);
+        }
+
+        .env-body {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #fff, var(--pink));
+            border: 2px solid var(--pink-deep);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .env-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 90px;
+            background: linear-gradient(135deg, var(--pink-deep), var(--gold));
+            clip-path: polygon(0 0, 50% 65%, 100% 0);
+            border-radius: 10px 10px 0 0;
+            transform-origin: top;
+            transition: transform 0.7s cubic-bezier(.68, -0.4, .27, 1.4);
+            z-index: 3;
+        }
+
+        .envelope.open .env-flap {
+            transform: rotateX(180deg);
+        }
+
+        .env-heart {
+            position: absolute;
+            top: 46%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.6rem;
+            z-index: 4;
+            animation: pulse 1.6s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+
+        .env-letter {
+            position: absolute;
+            left: 12px;
+            right: 12px;
+            bottom: 8px;
+            top: 40px;
+            background: var(--white);
+            border-radius: 6px;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.06);
+            transform: translateY(0);
+            transition: transform 0.6s ease 0.15s;
+            z-index: 2;
+        }
+
+        .envelope.open .env-letter {
+            transform: translateY(-130px);
+        }
+
+        .start-btn {
+            margin-top: 8px;
+            padding: 14px 38px;
+            border: none;
+            border-radius: 40px;
+            background: linear-gradient(135deg, var(--pink-line), var(--gold));
+            color: #fff;
+            font-size: 1.05rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .start-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 34px rgba(255, 126, 180, 0.45);
+        }
+
+        .start-btn:active {
+            transform: translateY(0);
+        }
+
+        .hint {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-top: -6px;
+        }
+
+        /* ---------- Letter screen ---------- */
+        #letter-screen {
+            flex-direction: column;
+            gap: 26px;
+        }
+
+        .paper {
+            max-width: 640px;
+            width: 100%;
+            background: rgba(255, 250, 249, 0.95);
+            /* hơi trong suốt để nhìn thấy ảnh bay phía sau */
+            backdrop-filter: blur(5px);
+            border-radius: 18px;
+            padding: clamp(24px, 5vw, 50px);
+            box-shadow: var(--shadow);
+            position: relative;
+            border: 1px solid rgba(255, 158, 196, 0.4);
+            animation: riseIn 0.8s ease both;
+        }
+
+        @keyframes riseIn {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .paper::before {
+            content: "";
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 28px;
+            background: var(--gold);
+            clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+            opacity: 0.85;
+        }
+
+        .paper h2 {
+            color: var(--pink-line);
+            font-size: clamp(1.8rem, 5vw, 2.6rem);
+            text-align: center;
+            margin-bottom: 6px;
+        }
+
+        .paper .date-line {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--pink-deep);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .paper p {
+            line-height: 1.85;
+            margin-bottom: 14px;
+            font-size: 1.02rem;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.6rem;
+            color: var(--pink-line);
+            margin-top: 10px;
+        }
+
+        .next-btn {
+            align-self: center;
+        }
+
+        /* ---------- Quests screen ---------- */
+        #quest-screen {
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .quest-title {
+            text-align: center;
+            color: var(--pink-line);
+            font-size: clamp(1.8rem, 5vw, 2.4rem);
+        }
+
+        .quest-sub {
+            text-align: center;
+            max-width: 500px;
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        .progress-wrap {
+            width: 100%;
+            max-width: 420px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
+            height: 14px;
+            overflow: hidden;
+            border: 1px solid var(--pink-deep);
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--pink-line), var(--gold));
+            transition: width 0.5s ease;
+        }
+
+        .progress-label {
+            font-size: 0.8rem;
+            color: var(--pink-line);
+            font-weight: 600;
+        }
+
+        .quest-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 18px;
+            max-width: 640px;
+            width: 100%;
+        }
+
+        .quest-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 22px 14px;
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(255, 158, 196, 0.25);
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.25s ease;
+            position: relative;
+        }
+
+        .quest-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--pink-line);
+        }
+
+        .quest-card.done {
+            background: linear-gradient(135deg, var(--pink), var(--lavender));
+            border-color: var(--gold);
+        }
+
+        .quest-icon {
+            font-size: 2.2rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .quest-name {
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+        }
+
+        .quest-reveal {
+            font-size: 0.82rem;
+            line-height: 1.5;
+            display: none;
+            margin-top: 8px;
+            color: var(--text);
+        }
+
+        .quest-card.done .quest-reveal {
+            display: block;
+        }
+
+        .quest-check {
+            position: absolute;
+            top: 8px;
+            right: 10px;
+            font-size: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .quest-card.done .quest-check {
+            opacity: 1;
+        }
+
+        /* ---------- Cake / Gift screen ---------- */
+        #cake-screen {
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .cake-title {
+            text-align: center;
+            color: var(--pink-line);
+            font-size: clamp(1.8rem, 5vw, 2.4rem);
+        }
+
+        /* ---------- Nến và Ngọn lửa ---------- */
+        .candles-row {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            margin-top: 10px;
+        }
+
+        .candle {
+            width: 14px;
+            height: 35px;
+            background: repeating-linear-gradient(45deg, #fff, #fff 4px, var(--pink-line) 4px, var(--pink-line) 8px);
+            border-radius: 3px;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .flame {
+            width: 12px;
+            height: 16px;
+            background: #ffcc00;
+            border-radius: 50% 50% 20% 20%;
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 10px #ffcc00, 0 0 20px #ff9900;
+            transition: opacity 0.3s ease;
+            animation: flicker 0.8s infinite alternate;
+        }
+
+        /* Khi nến bị tắt (thêm class 'blown' bằng JS) */
+        .candle.blown .flame {
+            opacity: 0;
+            animation: none;
+        }
+
+        @keyframes flicker {
+            0% {
+                transform: translateX(-50%) scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateX(-50%) scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        .cake-wrap {
+            cursor: pointer;
+            user-select: none;
+            text-align: center;
+        }
+
+        .cake {
+            font-size: 6rem;
+            display: inline-block;
+            transition: transform 0.25s ease;
+            filter: drop-shadow(0 10px 14px rgba(255, 158, 196, 0.4));
+        }
+
+        .cake:hover {
+            transform: scale(1.06) rotate(-2deg);
+        }
+
+        .cake.blown {
+            animation: wiggle 0.6s ease;
+        }
+
+        @keyframes wiggle {
+
+            0%,
+            100% {
+                transform: rotate(0);
+            }
+
+            25% {
+                transform: rotate(-6deg);
+            }
+
+            75% {
+                transform: rotate(6deg);
+            }
+        }
+
+        .cake-hint {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-top: 10px;
+        }
+
+        .wish-box {
+            max-width: 500px;
+            background: var(--white);
+            border-radius: 16px;
+            padding: 26px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.5s ease;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .wish-box.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .final-btn-wrap {
+            text-align: center;
+        }
+
+        /* ---------- Final screen ---------- */
+        #final-screen {
+            flex-direction: column;
+            gap: 18px;
+            text-align: center;
+        }
+
+        .final-title {
+            font-size: clamp(2.2rem, 8vw, 4rem);
+            color: var(--pink-line);
+            text-shadow: 2px 2px 0 var(--white);
+        }
+
+        .final-sub {
+            max-width: 500px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .age-badge {
+            display: inline-block;
+            margin: 6px 0 4px;
+            padding: 8px 22px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, var(--pink-line), var(--gold));
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-size: 1rem;
+        }
+
+        .replay-btn {
+            margin-top: 6px;
+            padding: 10px 26px;
+            border: 2px solid var(--pink-line);
+            background: transparent;
+            color: var(--pink-line);
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .replay-btn:hover {
+            background: var(--pink-line);
+            color: #fff;
+        }
+
+        /* ---------- Confetti ---------- */
+        .confetti-piece {
+            position: fixed;
+            top: -20px;
+            width: 9px;
+            height: 14px;
+            opacity: 0.9;
+            z-index: 999;
+            pointer-events: none;
+            animation: confettiFall linear forwards;
+        }
+
+        @keyframes confettiFall {
+            to {
+                transform: translateY(110vh) rotate(540deg);
+                opacity: 0.4;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .envelope {
+                width: 220px;
+                height: 145px;
+            }
+
+            .quest-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-decor" id="bgDecor">
+        <!-- ========================================================================= -->
+        <!-- 📸 THAY LINK 4 ẢNH BAY XUNG QUANH TẠI ĐÂY (Thay chỗ src="...") 📸 -->
+        <!-- ========================================================================= -->
+        <div class="flying-photo fp-1"><img src="https://i.ibb.co/WpGp2cY1/Screenshot-2026-08-15-212024.png"></div>
+        <div class="flying-photo fp-2"><img src="https://i.ibb.co/FLs0fFZM/Screenshot-2026-08-15-212034.png"></div>
+        <div class="flying-photo fp-3"><img src="https://i.ibb.co/s964GXcN/Screenshot-2026-08-16-213116.png"></div>
+        <div class="flying-photo fp-4"><img src="https://i.ibb.co/5x2fs2RP/image.png"></div>
+        <!-- ========================================================================= -->
+    </div>
+
+    <!-- ============ INTRO SCREEN ============ -->
+    <section class="screen" id="intro">
+        <span class="badge">A little something for cici</span>
+        <h1 class="intro-title">Happy 17th Birthday</h1>
+        <p class="intro-sub">A tiny digital diary, made just for my favorite person. Open the envelope to begin your
+            birthday quest 💌</p>
+
+        <div class="envelope-wrap">
+            <div class="envelope" id="envelope">
+                <div class="env-flap"></div>
+                <div class="env-heart">💗</div>
+                <div class="env-body"></div>
+                <div class="env-letter"></div>
+            </div>
+        </div>
+
+        <button class="start-btn" id="openLetterBtn">💌 Open the Letter</button>
+        <p class="hint">tap the envelope or the button to begin</p>
+    </section>
+
+    <!-- ============ LETTER SCREEN ============ -->
+    <section class="screen hidden" id="letter-screen">
+        <div class="paper">
+            <!-- ========================================================================= -->
+            <!-- 💌 CHỈNH SỬA NỘI DUNG BỨC THƯ Ở CÁC THẺ <p> BÊN DƯỚI 💌 -->
+            <!-- ========================================================================= -->
+
+            <h2 class="script">Dear cici mom thui,</h2>
+            <p class="date-line">☆ On your 17th birthday ☆</p>
+
+            <p>Seventeen looks so good on you.</p>
+            <p>Wherever this year takes you, I hope it's full of good music, good food, easy laughter, and people who
+                see how amazing you are — the way I do.</p>
+
+            <p>Happy birthday! Sorry if this feels a bit sudden since we’ve only known each other for a few days, but I
+                really hope you like it hehe.</p>
+
+            <p class="signature script">— your dumpling, always</p>
+
+            <!-- ========================================================================= -->
+        </div>
+
+        <button class="start-btn next-btn" id="toQuestsBtn">Continue the journey →</button>
+    </section>
+
+    <!-- ============ QUEST SCREEN ============ -->
+    <section class="screen hidden" id="quest-screen">
+        <h2 class="quest-title">🎮 Birthday Mini-Quests</h2>
+        <p class="quest-sub">Tap each card to unlock a little memory or wish. Complete all four to unlock the final
+            surprise!</p>
+
+        <div class="progress-wrap">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <span class="progress-label" id="progressLabel">0 / 4 unlocked</span>
+
+        <div class="quest-grid" id="questGrid">
+            <div class="quest-card" data-quest="1">
+                <span class="quest-check">✔</span>
+                <span class="quest-icon">🧸</span>
+                <div class="quest-name">A Memory</div>
+                <div class="quest-reveal">One of my favorite memories of us is when i have just knew you, i was suprise
+                    that one second you repost 4 videos despite it was late at night ┌(。Д。)┐(pls go to sleep early).
+                </div>
+            </div>
+            <div class="quest-card" data-quest="2">
+                <span class="quest-check">✔</span>
+                <span class="quest-icon">🌟</span>
+                <div class="quest-name">A Wish</div>
+                <div class="quest-reveal">Wishing you a year filled with joy — go all out in everything you do, stay
+                    true to yourself, and live with zero hesitation (as long as you keep up with your studies, of course
+                    (⓿_⓿)).</div>
+            </div>
+            <div class="quest-card" data-quest="3">
+                <span class="quest-check">✔</span>
+                <span class="quest-icon">💌</span>
+                <div class="quest-name">A Secret</div>
+                <div class="quest-reveal">Honestly, I think you're one of the most petite and adorable people I've ever
+                    known. Don't let that go to your head, though (* ￣︿￣).</div>
+            </div>
+            <div class="quest-card" data-quest="4">
+                <span class="quest-check">✔</span>
+                <span class="quest-icon">🎁</span>
+                <div class="quest-name">A Promise</div>
+                <div class="quest-reveal">I promise to always be your biggest cheerleader, on your good days and your
+                    messy ones. ( ͡° ͜ʖ ͡°)</div>
+            </div>
+        </div>
+
+        <button class="start-btn hidden" id="toCakeBtn">🎂 Unlock the Cake →</button>
+    </section>
+
+    <!-- ============ CAKE SCREEN ============ -->
+    <section class="screen hidden" id="cake-screen">
+        <h2 class="cake-title">Make a wish 🎂</h2>
+
+        <div class="cake-wrap" id="cakeWrap">
+            <!-- Hàng 7 cây nến phát sáng -->
+            <div class="candles-row" id="candlesRow">
+                <div class="candle" id="candle-1">
+                    <div class="flame"></div>
+                </div>
+                <div class="candle" id="candle-2">
+                    <div class="flame"></div>
+                </div>
+                <div class="candle" id="candle-3">
+                    <div class="flame"></div>
+                </div>
+                <div class="candle" id="candle-4">
+                    <div class="flame"></div>
+                </div>
+                <div class="candle" id="candle-5">
+                    <div class="flame"></div>
+                </div>
+                <div class="candle" id="candle-6">
+                    <div class="flame"></div>
+                </div>
+                <div class="candle" id="candle-7">
+                    <div class="flame"></div>
+                </div>
+            </div>
+
+            <!-- Bánh kem -->
+            <span class="cake" id="cakeEmoji">🎂</span>
+            <p class="cake-hint">Tap all 7 candles to blow them out, then tap the cake! ✨</p>
+        </div>
+
+        <!-- Hộp lời chúc (mặc định thêm hidden để JS mở sau khi hoàn thành) -->
+        <div class="wish-box hidden" id="wishBox">
+            🕯️ <strong>Wish made!</strong><br>
+            May every candle you blow out bring you exactly what your heart is quietly hoping for. Happy 17th birthday —
+            this is only the beginning of your best years yet! 🎀
+        </div>
+
+        <div class="final-btn-wrap">
+            <button class="start-btn hidden" id="toFinalBtn">One last thing →</button>
+        </div>
+    </section>
+
+    <!-- ============ FINAL SCREEN ============ -->
+    <section class="screen hidden" id="final-screen">
+        <div class="age-badge">🎀 17 YEARS OF YOU 🎀</div>
+        <h1 class="final-title">Happy Birthday!</h1>
+        <p class="final-sub">Thank you for being exactly who you are. Here's to a year as sweet, bright, and wonderful
+            as you are. I love you endlessly. 💗</p>
+        <button class="replay-btn" id="replayBtn">↺ Replay the letter</button>
+    </section>
+
+    <script>
+        (function () {
+            // ---------- Floating background emojis ----------
+            const decor = document.getElementById('bgDecor');
+            const emojis = ['💗', '✨', '🌸', '⭐', '🎀'];
+            for (let i = 0; i < 22; i++) {
+                const el = document.createElement('span');
+                el.className = 'floatie';
+                el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                el.style.left = Math.random() * 100 + 'vw';
+                el.style.fontSize = (0.9 + Math.random() * 1.4) + 'rem';
+                el.style.animationDuration = (10 + Math.random() * 14) + 's';
+                el.style.animationDelay = (Math.random() * 14) + 's';
+                decor.appendChild(el);
+            }
+
+            // ---------- Screen navigation ----------
+            const screens = {
+                intro: document.getElementById('intro'),
+                letter: document.getElementById('letter-screen'),
+                quest: document.getElementById('quest-screen'),
+                cake: document.getElementById('cake-screen'),
+                final: document.getElementById('final-screen')
+            };
+            function goTo(name) {
+                Object.values(screens).forEach(s => s.classList.add('hidden'));
+                screens[name].classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // ---------- Envelope open ----------
+            const envelope = document.getElementById('envelope');
+            const openLetterBtn = document.getElementById('openLetterBtn');
+            function openEnvelope() {
+                envelope.classList.add('open');
+                burstConfetti(30);
+                setTimeout(() => goTo('letter'), 750);
+            }
+            envelope.addEventListener('click', openEnvelope);
+            openLetterBtn.addEventListener('click', openEnvelope);
+
+            // ---------- Letter -> Quests ----------
+            document.getElementById('toQuestsBtn').addEventListener('click', () => goTo('quest'));
+
+            // ---------- Quests ----------
+            const questCards = document.querySelectorAll('.quest-card');
+            const progressBar = document.getElementById('progressBar');
+            const progressLabel = document.getElementById('progressLabel');
+            const toCakeBtn = document.getElementById('toCakeBtn');
+            let unlocked = 0;
+
+            questCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    if (card.classList.contains('done')) return;
+                    card.classList.add('done');
+                    unlocked++;
+                    progressBar.style.width = (unlocked / 4 * 100) + '%';
+                    progressLabel.textContent = unlocked + ' / 4 unlocked';
+                    burstConfetti(14);
+                    if (unlocked === 4) {
+                        toCakeBtn.classList.remove('hidden');
+                    }
+                });
+            });
+            toCakeBtn.addEventListener('click', () => goTo('cake'));
+
+            // ---------- Cake screen: 7 candles blow ----------
+            const candles = document.querySelectorAll('.candle');
+            const cakeEmoji = document.getElementById('cakeEmoji');
+            const wishBox = document.getElementById('wishBox');
+            const toFinalBtn = document.getElementById('toFinalBtn');
+            const cakeHint = document.querySelector('.cake-hint');
+
+            let candlesBlownCount = 0;
+            let cakeBlown = false;
+
+            // Xử lý sự kiện khi ấn vào từng cây nến
+            candles.forEach(candle => {
+                candle.addEventListener('click', () => {
+                    // Nếu nến chưa tắt thì mới cho tắt
+                    if (!candle.classList.contains('blown')) {
+                        candle.classList.add('blown');
+                        candlesBlownCount++;
+
+                        // Nếu đã tắt đủ 7 nến, đổi dòng chữ hướng dẫn
+                        if (candlesBlownCount === 7) {
+                            cakeHint.textContent = "All candles blown! Now tap the cake! 🍰";
+                            cakeHint.style.color = "var(--pink-line)";
+                            cakeHint.style.fontWeight = "bold";
+                        }
+                    }
+                });
+            });
+
+            // Xử lý sự kiện khi ấn vào bánh kem
+            cakeEmoji.addEventListener('click', () => {
+                // Nếu chưa tắt đủ 7 nến thì hiện cảnh báo
+                if (candlesBlownCount < 7) {
+                    alert("Please blow out all 7 candles first! 🎂🕯️");
+                    return;
+                }
+
+                if (cakeBlown) return;
+                cakeBlown = true;
+                cakeEmoji.textContent = '🍰'; // Chuyển thành miếng bánh
+                cakeEmoji.classList.add('blown');
+
+                wishBox.classList.remove('hidden');
+                wishBox.classList.add('show');
+                toFinalBtn.classList.remove('hidden');
+                burstConfetti(50);
+            });
+
+            toFinalBtn.addEventListener('click', () => goTo('final'));
+
+            // ---------- Replay ----------
+            document.getElementById('replayBtn').addEventListener('click', () => {
+                envelope.classList.remove('open');
+                questCards.forEach(c => c.classList.remove('done'));
+                unlocked = 0;
+                progressBar.style.width = '0%';
+                progressLabel.textContent = '0 / 4 unlocked';
+                toCakeBtn.classList.add('hidden');
+
+                cakeBlown = false;
+                cakeEmoji.textContent = '🎂';
+                cakeEmoji.classList.remove('blown');
+                wishBox.classList.remove('show');
+                wishBox.classList.add('hidden'); // Reset ẩn wishbox
+                toFinalBtn.classList.add('hidden');
+
+                // Reset nến
+                document.querySelectorAll('.candle').forEach(c => c.classList.remove('blown'));
+                candlesBlownCount = 0;
+                cakeHint.textContent = "Tap all 7 candles to blow them out, then tap the cake! ✨";
+                cakeHint.style.color = "";
+                cakeHint.style.fontWeight = "normal";
+
+                goTo('intro');
+            });
+
+            // ---------- Confetti helper ----------
+            const confettiColors = ['#ff9ec4', '#f3d9a4', '#e3d9f7', '#fff', '#ff7fb4'];
+            function burstConfetti(count) {
+                for (let i = 0; i < count; i++) {
+                    const piece = document.createElement('div');
+                    piece.className = 'confetti-piece';
+                    piece.style.left = Math.random() * 100 + 'vw';
+                    piece.style.background = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+                    piece.style.animationDuration = (2.2 + Math.random() * 1.8) + 's';
+                    piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+                    document.body.appendChild(piece);
+                    setTimeout(() => piece.remove(), 4200);
+                }
+            }
+        })();
+    </script>
+
+</body>
+
+</html>
